@@ -1,10 +1,12 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap through node_modules
-import './index.css';//external style file
-import React, {Component} from 'react';
+import '../index.css';//external style file
+import React from 'react';
+
+// import ReactDOM from 'react-dom';
 import axios from 'axios';//to do CRUD API call- MongoDB
 
-class Router extends Component{
+class Router extends React.Component{
 state =[
     {
       name : 'Book',
@@ -20,16 +22,23 @@ state =[
   ]
 
   componentDidMount(){
+    //const REACT_APP_BASE_URL = "http://192.168.33.10:5000"
 
-      const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+     //const BASE_URL ='http://192.168.33.10:5000';
       console.log(BASE_URL);
+      console.log(sessionStorage);
 
     this.getProducts(BASE_URL);
     this.deleteProduct(BASE_URL);
     this.addProduct(BASE_URL);
+    this.addUser(BASE_URL);
   }
 
-
+ // ourFormData = (dataForm) =>{
+ //   console.log(this.props.formData);
+ //
+ // }
 
   getProducts = (url) =>{
     console.log(`${url}/allProductsFromDB`)
@@ -40,39 +49,45 @@ state =[
 
   }
 
-  deleteProduct = (url) => {
-    console.log(`${url}/deleteProduct/5e66b7e58c1e32139c750fc3`);
-    axios.delete(`${url}/deleteProduct/5e66b7e58c1e32139c750fc3`)
-    .then(res => {
-      console.log('deleted');
-    });
+  // deleteProduct = (url) => {
+  //   console.log(`${url}/deleteProduct/5e66b7e58c1e32139c750fc3`);
+  //   axios.delete(`${url}/deleteProduct/5e66b7e58c1e32139c750fc3`)
+  //   .then(res => {
+  //     console.log('deleted');
+  //   });
+  //
+  // }
+  // addProduct = (url) =>{
+  //   console.log(`${url}/addProduct`);
+  //   const post = {
+  //     name : this.state[1].name,
+  //     price : this.state[1].price,
+  //     userId : this.state[1].userId
+  //   }
+  //   axios.post(`${url}/addProduct`, post)
+  //   .then(res => {
+  //     console.log(res.data);
+  //
+  //   })
+  // }
 
-  }
-  addProduct = (url) =>{
-    console.log(`${url}/addProduct`);
-    const post = {
-      name : this.state[1].name,
-      price : this.state[1].price,
-      userId : this.state[1].userId
-    }
-    axios.post(`${url}/addProduct`, post)
+  addUser = (url) =>{
+    console.log(`${url}/addUser`);
+    console.log(this.props.formData);
+    axios.post(`${url}/registerUser`, this.props.formData)
     .then(res => {
       console.log(res.data);
-
     })
   }
 
-
-
   render(){
-    const myStyle ={
-      backgroundColor : "lightblue",
-      color : "blue"
-    }
+    // const myStyle ={
+    //   backgroundColor : "lightblue",
+    //   color : "blue"
+    // }
     return(
-      <div>
-      <h1 style={myStyle}> Get request to database </h1>
-      <h1 style={{color : "Red"}}> Get request to database </h1>)
+      <div className="container">
+      <h1 style={{color : "Brown"}}> Added a new user successfully </h1>)
       </div>
     )
   }

@@ -1,13 +1,12 @@
-
 {
   "name": "mongodb-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "grunt": "grunt",
     "backend": "nodemon -L index.js",
-    "client": "cd .. && cd client && npm start",
-    "dev": "concurrently \"npm run backend\"   \"npm run client\" "
+    "dev": "concurrently \"npm run grunt  \" \" npm run backend\" "
   },
   "keywords": [],
   "author": "",
@@ -18,13 +17,16 @@
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.9.3"
+    "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
+    "mongoose": "^5.9.3",
+    "uglify-js": "^3.8.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.4",
+    "grunt": "^1.1.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-nodemon": "^0.4.2"
+    "grunt-nodemon": "^0.4.2",
+    "terser-webpack-plugin": "^2.3.5"
   }
 }

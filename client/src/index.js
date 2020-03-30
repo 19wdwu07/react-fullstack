@@ -1,16 +1,22 @@
-// import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Nav from './components/Nav/Nav';
+// import dotenv from 'dotenv';
+//import Form from './components/Form/Form';
 
-
-// ReactDOM.render(<h1> Full Stack</h1>, document.getElementById('root'))
-
-import Router from './components/Router';
+// import Router from './components/Router';
 
 class App extends Component {
   render() {
+
     return (
-        <Router />
+      <div className="container">
+        <Nav/>
+
+
+      </div>
     );
   }
 }

@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend" : "nodemon -L index.js",
-    "client"  : "cd .. && client && npm start",
-    "dev" : "concurrently \"npm run backend\" \"npm run client\" "
-
+    "backend": "cd backend && nodemon -L index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run client\" "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "proxy":"http://localhost:5000"
+  "proxy": "http://localhost:5000"
 }

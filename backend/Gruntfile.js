@@ -1,31 +1,31 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      files: ['Gruntfile.js', 'index.js'],
       options: {
+        esversion: 6,
+        sub: true,
         globals: {
           jQuery: true
+
         }
       }
     },
     watch: {
       files: ['index.js','Gruntfile.js'],
       tasks: ['jshint']
-    },
-    nodemon: {
-    dev: {
-      script: '-L index.js'
     }
-}
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['watch','nodemon']);
-  grunt.registerTask('uglify',['uglify']);
+
+
+  grunt.registerTask('default', ['watch']);
+
 
 };
